@@ -1,0 +1,61 @@
+package roundrobit;
+
+import java.util.Scanner;
+import java.util.*;
+import java.io.*;
+
+public class RoundRobit {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner (System.in);
+        int tiempo[]= new int[5];
+        int proceso[]=new int[5];
+        System.out.println("Ingrese tiempo 1");
+        int tiempo1= input.nextInt();
+        tiempo[0]=tiempo1;
+        System.out.println("Ingrese tiempo 2");
+        int tiempo2= input.nextInt();
+        tiempo[1]=tiempo2;
+        System.out.println("Ingrese tiempo 3");
+        int tiempo3= input.nextInt();
+        tiempo[2]=tiempo3;
+        System.out.println("Ingrese tiempo 4");
+        int tiempo4= input.nextInt();
+        tiempo[3]=tiempo4;
+        System.out.println("Ingrese tiempo 5");
+        int tiempo5= input.nextInt();
+        tiempo[4]=tiempo5;
+        System.out.println("");
+        System.out.println("");
+        int quantum = ((tiempo[0]+tiempo[1]+tiempo[2]+tiempo[3]+tiempo[4])/5) ;
+        System.out.println("El Quantum "+quantum);
+        
+        int tiempof=0;
+        int sumatoria=0;
+        for (int i = 0; i < tiempo.length; i++) {
+            int tiempoespera=tiempo[i]-quantum;
+            if (tiempoespera<0) {
+                proceso[i]=tiempoespera;
+                tiempof=tiempof+quantum+tiempoespera;
+                System.out.println("tiempo Final "+tiempof);
+                sumatoria=sumatoria+tiempof;
+                System.out.println("Sumatoria "+sumatoria);
+                tiempo[i]=tiempof;
+            }else if (tiempoespera>0) {
+                tiempof=tiempof+quantum;
+                proceso[i]=tiempoespera;
+            }
+        }
+        
+        for (int i = 0; i < 5; i++) {
+            System.out.print(" "+proceso[i]+" ");
+        }
+        System.out.println("");
+        for (int i = 0; i < 5; i++) {
+            System.out.print(" "+tiempo[i]+" ");
+        }
+        
+        System.out.println(" ");
+    }
+    
+}
